@@ -326,12 +326,12 @@ class CoCa(nn.Module):
         num_sub_beams = num_beams // num_beam_groups
         batch_beam_size, cur_len = input_ids.shape
         beam_indices = None
-
+        """
         if num_beams * batch_size != batch_beam_size:
             raise ValueError(
                 f"Batch dimension of `input_ids` should be {num_beams * batch_size}, but is {batch_beam_size}."
             )
-
+        """
         beam_scores = torch.full((batch_size, num_beams), -1e9, dtype=torch.float, device=device)
         # initialise score of first beam of each group with 0 and the rest with 1e-9. This ensures that the beams in
         # the same group don't produce same tokens everytime.
